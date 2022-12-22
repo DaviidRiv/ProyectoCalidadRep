@@ -27,14 +27,13 @@
 
                         <input type="submit" class="btn btn-info" value="Buscar" /><br />
                     </p>
-                </form>
-                <hr />
-                <center>
-                    <h1>Dashboard User</h1>
-                </center>
-                <hr />
-
-                <table class="table">
+                </form>                            
+                    <hr />
+                    <center>
+                        <h1>Dashboard User</h1>
+                    </center>
+                    <hr />
+                <table class="table" id="tblData">                    
                     <thead>
                         <tr>
                             <th>
@@ -97,8 +96,8 @@
                             <th></th>
                         </tr>
                     </thead>
-    <tbody>
-    @foreach (var item in Model.Formulario_Model) {
+            <tbody>
+            @foreach (var item in Model.Formulario_Model) {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.ID_Form)
@@ -161,9 +160,10 @@
                     <a asp-page="./DetailsUser" asp-route-id="@item.ID_Form">Details</a> 
                 </td>
             </tr>
-    }
-    </tbody>
-</table>
+            }
+            </tbody>
+        </table>
+
      <table class="table">
         <thead>
             <tr>
