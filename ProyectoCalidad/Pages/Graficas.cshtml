@@ -1,0 +1,148 @@
+﻿@page
+@model ProyectoCalidad.Pages.GraficasModel
+@{
+    ViewData["Title"] = "Graficas";
+    int cont = 0;
+}
+<head>
+    <meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8">
+    <!-- style css -->
+    <link href="@Url.Content("~/css/style.css")" rel="stylesheet" />
+    <!-- Responsive-->
+    <link href="@Url.Content("~/css/responsive.css")" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.2/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+
+<body class="main-layout">
+    <div class="text-center">
+        <h1 class="display-4">DPU</h1>
+    </div>
+      <form>
+            <p>
+                Fecha Inicio: <input type="date" id="FechaI" asp-for="SearchString"/> <a>  </a>
+                Fecha Final: <input type="date" id="FechaF" asp-for="SearchString2"/>
+                <input type="submit" value="Buscar" class="btn btn-info" />
+            </p>
+        </form>
+    <center>
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+    </center>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Fecha
+                </th>
+                <th>
+                    Jobs
+                </th>
+                <th>
+                    Cantidad
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Formulario_Model)
+            {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ReleaseDate)
+                            </td>
+                            <td>
+                                @item.Jobs
+                            </td>
+                            <td>
+                                @item.JobCount
+                            </td>
+                        </tr>
+                        cont = cont + @item.JobCount;
+            }
+            <tr>
+                    <td>
+
+                    </td>
+                    <td>
+                        <strong>Totales: </strong>
+                    </td>
+                    <td>
+                        <strong>@cont</strong>
+                    </td>
+            </tr>
+             <tr>
+                <td>
+                    <h3><a asp-page="./T_Deteccion">Deteccion</a>
+                    <a> | </a>
+                    <a asp-page="./T_Paretos">Paretos</a></h3> 
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <a asp-page="./Graficas">↩Back to List</a>
+                </td>
+            </tr>
+                <br /><br />
+            <center> 
+                <h2>  
+                    Tabla DPU
+                </h2>
+            </center>
+        </tbody>
+    </table>
+   
+  </body>
+
+    @{
+        int count = 0;
+        string _tags = "";
+        int[] _values = new int[50];
+
+        @foreach (var item in Model.Formulario_Model)
+             {
+              _tags = _tags + "," + @item.Jobs;
+              _values[count] = @item.JobCount;
+              count++;      
+             } 
+         var yourJavaScriptArray = Html.Raw(Json.Serialize(_values));
+                     <input type="hidden" id="tags" value="@_tags"/>
+                     <input type="hidden" id="values" value="@yourJavaScriptArray"/>           
+     }
+
+<script>
+    
+    if ($('#myChart').length) {
+        
+        var xValues = document.getElementById('tags').value.replace(/\[|\]/g, '').split(',')
+        var yValues = Array.from(document.getElementById('values').value.replace(/\[|\]/g, '').split(',')).map(Number)
+        xValues.shift()
+        new Chart("myChart", {
+          type: "line",
+          data: {
+            labels: xValues,
+            datasets: [{
+                  fill: false,
+                  lineTension: 0,
+                  backgroundColor: "rgba(0,0,255,1.0)",
+                  borderColor: "rgba(0,0,255,0.1)",
+                  data: yValues
+            }]
+          },
+          options: {
+                legend: {
+                    display: false,
+                },
+                scales: {
+                  yAxes: [],
+                },
+                title: {
+                  display: true,
+                  text: "Gráfica DPU"
+                }
+          }
+        });
+    }
+</script>

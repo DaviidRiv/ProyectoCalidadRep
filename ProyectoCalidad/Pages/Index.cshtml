@@ -1,0 +1,31 @@
+@page
+@model IndexModel
+@{
+    //ViewData["Title"] = "Index";
+}
+<!-- style css -->
+<link href="@Url.Content("~/css/style.css")" rel="stylesheet" />
+<!-- Responsive-->
+<link href="@Url.Content("~/css/responsive.css")" rel="stylesheet" />
+
+<body class="main-layout">
+    @{
+        if (User.IsInRole("Administrador"))
+        {
+                <h1 class="display-4">Welcome</h1>
+                <h1>Role: Admin</h1>
+                <h1><div>@ViewData["GraphApiResult"]</div></h1>
+                <h1><div>@ViewData["GraphApiResult2"]</div></h1> 
+        }
+        else if (User.IsInRole("Usuario"))
+        {
+                <h1 class="display-4">Welcome</h1>
+                <h1>Role: User</h1>
+                <h1><div>@ViewData["GraphApiResult"]</div></h1>
+                <h1><div>@ViewData["GraphApiResult2"]</div></h1> 
+        }
+        
+    }
+    <img src="~/images/mascota_daikin.png" style="widht:250px; height:250px;" title="Pichon-Kun">
+    
+</body>

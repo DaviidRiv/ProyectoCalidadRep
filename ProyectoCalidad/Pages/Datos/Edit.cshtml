@@ -1,0 +1,272 @@
+﻿@page
+@model ProyectoCalidad.Pages.Datos.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>DefectosForm</title>
+    <!-- bootstrap css -->
+    @*<link href="@Url.Content("~/css/bootstrap.min.css")" rel="stylesheet" />*@
+    <!-- style css -->
+    <link href="@Url.Content("~/css/style.css")" rel="stylesheet" />
+    <!-- Responsive-->
+    <link href="@Url.Content("~/css/responsive.css")" rel="stylesheet" />
+   
+</head>
+<body class="main-layout">       
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Edición de datos</h2>
+                     <hr/>
+                  </div>
+               </div>
+            </div>
+<div class="container">
+     <div class="row">
+        <div class="col-md-12">
+            <form class="main_form" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Formulario_Model.ID_Form" />
+                    <div class="row">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="form-group">@*Fecha*@
+                                        <label asp-for="Formulario_Model.ReleaseDate" class="control-label"></label>
+                                        <input asp-for="Formulario_Model.ReleaseDate" id="fecha" class="form-control" />
+                                        <span asp-validation-for="Formulario_Model.ReleaseDate" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">@*Semana*@
+                                        <label asp-for="Formulario_Model.Semana" class="control-label"></label>
+                                        <input asp-for="Formulario_Model.Semana" class="form-control" type="week"/>
+                                        <span asp-validation-for="Formulario_Model.Semana" class="text-danger"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group">@*Mes*@
+                                        <label asp-for="Formulario_Model.Mes" class="control-label"></label>
+                                        <input asp-for="Formulario_Model.Mes" id="mesanio" class="form-control" type="month"/>
+                                        <span asp-validation-for="Formulario_Model.Mes" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">@*Anio*@
+                                        <label asp-for="Formulario_Model.Anio" class="control-label"></label>
+                                        <input asp-for="Formulario_Model.Anio" id="anio" class="form-control" />                                           
+                                        <span asp-validation-for="Formulario_Model.Anio" class="text-danger"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group">@*Mes/Anio*@
+                                        <label asp-for="Formulario_Model.MesAnio" class="control-label"></label>
+                                        <input asp-for="Formulario_Model.MesAnio" id="MxY" class="form-control">
+                                        <span asp-validation-for="Formulario_Model.MesAnio" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">@*Serial*@
+                                        <label asp-for="Formulario_Model.Serial" class="control-label"></label>
+                                        <input asp-for="Formulario_Model.Serial" class="form-control" />
+                                        <span asp-validation-for="Formulario_Model.Serial" class="text-danger"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group">@*Job*@
+                                        <label asp-for="Formulario_Model.Job" class="control-label"></label>
+                                        <input asp-for="Formulario_Model.Job" class="form-control" />
+                                        <span asp-validation-for="Formulario_Model.Job" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">@*Ensamble*@
+                                        <label asp-for="Formulario_Model.Ensamble" class="control-label"></label>
+                                        <input asp-for="Formulario_Model.Ensamble" class="form-control" />
+                                        <span asp-validation-for="Formulario_Model.Ensamble" class="text-danger"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group">@*Tamanio*@
+                                        <label asp-for="Formulario_Model.Tamanio" class="control-label"></label>
+                                        <select asp-for="Formulario_Model.Tamanio" class="form-control">
+                                                                <option>FAN</option>
+                                                                <option>4FAN</option>
+                                                                <option>6FAN</option>
+                                                                <option>8FAN</option>
+                                                                <option>10FAN</option>
+                                                                
+                                        </select>
+                                        <span asp-validation-for="Formulario_Model.Tamanio" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">@*Deteccion*@
+                                        <label asp-for="Formulario_Model.Deteccion" class="control-label"></label>
+                                        <select asp-for="Formulario_Model.Deteccion" class="form-control" >
+                                                                <option>Linea</option>
+                                                                <option>Run Test</option>
+                                                                <option>Leak Test</option>
+                                                                <option>Liberacion</option>
+                                                                
+                                        </select>
+                                        <span asp-validation-for="Formulario_Model.Deteccion" class="text-danger"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group">@*Pareto*@
+                                        <label asp-for="Formulario_Model.Pareto" class="control-label"></label>
+                                        <select asp-for="Formulario_Model.Pareto" class="form-control">
+                                                                <option>Apariencia</option>
+                                                                <option>Danio</option>
+                                                                <option>Desalineado</option>
+                                                                <option>Falta de conexion</option>
+                                                                <option>Falta de marca testigo</option>
+                                                                <option>Faltante proceso</option>
+                                                                <option>Flojo/Suelto</option>
+                                                                <option>Fuera de spec</option>
+                                                                <option>Fuga soldadura</option>
+                                                                <option>Fuga torque</option>
+                                                                <option>Fuga</option>
+                                                                <option>Incorrecto</option>
+                                                                <option>Mal cableado</option>
+                                                                <option>Mal ensamble</option>
+                                                                <option>Mal ruteo</option>
+                                                                <option>Posición incorrecta</option>
+                                                                <option>Roce</option>
+                                                                <option>Omisión de proceso</option>
+                                                                <option>Mal etiquetado</option>
+                                                                <option>Faltante por inventario</option>
+                                                                
+                                        </select>
+                                        <span asp-validation-for="Formulario_Model.Pareto" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">@*ParetoSN*@
+                                        <label asp-for="Formulario_Model.ParetoSN" class="control-label"></label>
+                                        <input asp-for="Formulario_Model.ParetoSN" class="form-control"/>
+                                        <span asp-validation-for="Formulario_Model.ParetoSN" class="text-danger"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group">@*Componente*@
+                                        <label asp-for="Formulario_Model.Componente" class="control-label"></label>
+                                        <input asp-for="Formulario_Model.Componente" class="form-control" />
+                                        <span asp-validation-for="Formulario_Model.Componente" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">@*Elemento*@
+                                        <label asp-for="Formulario_Model.Elemento" class="control-label"></label>
+                                        <input asp-for="Formulario_Model.Elemento" class="form-control" />
+                                        <span asp-validation-for="Formulario_Model.Elemento" class="text-danger"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group">@*Remaches*@
+                                        <label asp-for="Formulario_Model.Remaches" class="control-label"></label>
+                                        <input asp-for="Formulario_Model.Remaches" class="form-control" />
+                                        <span asp-validation-for="Formulario_Model.Remaches" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">@*Estacion*@
+                                        <label asp-for="Formulario_Model.Estacion" class="control-label"></label>
+                                        <select asp-for="Formulario_Model.Estacion" class="form-control">
+                                                            <option>Almacen</option>
+                                                            <option>AMS</option>
+                                                            <option>Back Shop</option>
+                                                            <option>Base</option>
+                                                            <option>Brazing</option>
+                                                            <option>Cableado</option>
+                                                            <option>Calidad Linea</option>
+                                                            <option>Calidad Pruebas</option>
+                                                            <option>Carga y Vacio</option>
+                                                            <option>Coils</option>
+                                                            <option>Compras</option>
+                                                            <option>Compresores</option>
+                                                            <option>Empaque</option>
+                                                            <option>Evaporador</option>
+                                                            <option>General</option>
+                                                            <option>Ingenieria</option>
+                                                            <option>Leak Test</option>
+                                                            <option>Motores</option>
+                                                            <option>Provedor</option>
+                                                            <option>Run Test</option>
+                                                            <option>Sheet Metal</option>
+                                                            <option>Top Mount</option>
+                                            </select>
+                                        <span asp-validation-for="Formulario_Model.Estacion" class="text-danger"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>                                    
+                                <div class="form-group">@*Descripcion*@
+                                        <label asp-for="Formulario_Model.Descripcion" class="control-label"></label>
+                                        <textarea asp-for="Formulario_Model.Descripcion" class="form-control" > </textarea>
+                                        <span asp-validation-for="Formulario_Model.Descripcion" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">@*Comentarios*@
+                                        <label asp-for="Formulario_Model.Comentarios" class="control-label"></label>
+                                        <textarea asp-for="Formulario_Model.Comentarios" class="form-control" > </textarea>
+                                        <span asp-validation-for="Formulario_Model.Comentarios" class="text-danger"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <hr />
+                                </td>
+                                <td>
+                                    <hr />
+                                </td>
+                            </tr>
+                        </table>       
+                        <br /><br /><br />
+                        <center>
+                            <div class="form-group">
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                            </div>
+                        </center>            
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+<br /><br />
+<div>
+    <a asp-page="./Index">↩Back to List</a>
+</div>
+<br /><br />
+</body>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

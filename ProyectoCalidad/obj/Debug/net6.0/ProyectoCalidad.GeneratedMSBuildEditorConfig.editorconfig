@@ -1,0 +1,92 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ProyectoCalidad
+build_property.RootNamespace = ProyectoCalidad
+build_property.ProjectDir = C:\Users\MorenoCD\Documents\Visual Studio 2022\Code Snippets\Visual C++\My Code Snippets\ProyectoCalidad\ProyectoCalidad\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\MorenoCD\Documents\Visual Studio 2022\Code Snippets\Visual C++\My Code Snippets\ProyectoCalidad\ProyectoCalidad
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/Datos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0b3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/Datos/DashUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0b3NcRGFzaFVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/Datos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0b3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/Datos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0b3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/Datos/DetailsUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0b3NcRGV0YWlsc1VzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/Datos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0b3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/Datos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0b3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/Graficas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZmljYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/T_Deteccion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVF9EZXRlY2Npb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/T_Paretos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVF9QYXJldG9zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/UserIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlckluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MorenoCD/Documents/Visual Studio 2022/Code Snippets/Visual C++/My Code Snippets/ProyectoCalidad/ProyectoCalidad/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-5y7lb32twl
