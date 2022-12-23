@@ -22,9 +22,9 @@ namespace ProyectoCalidad.Models
         [Display(Name = "Tamaño")]
         public string Tamanio { get; set; } = string.Empty;
         public string Deteccion { get; set; } = string.Empty;
-        [Display(Name = "Pareto P. Nivel")]
+        [Display(Name = "Pareto P. N.")]
         public string Pareto { get; set; } = string.Empty;
-        [Display(Name = "Pareto S. Nivel")]
+        [Display(Name = "Pareto S. N.")]
         public string ParetoSN { get; set; } = string.Empty;
         public string Componente { get; set; } = string.Empty;
         public string Elemento { get; set; } = string.Empty;

@@ -6,15 +6,11 @@
 }
 <head>
     <meta charset="UTF-8">
-    <!-- bootstrap css -->
-    @*<link href="@Url.Content("~/css/bootstrap.min.css")" rel="stylesheet" />*@
-    <!-- style css -->
-    <link href="@Url.Content("~/css/style.css")" rel="stylesheet" />
-    <!-- Responsive-->
-    <link href="@Url.Content("~/css/responsive.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/style.css")" rel="stylesheet" />    
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/styleTables.css")"/>
+
 </head>
-<body class="main-layout">
-    
+    <body class="main-layout">
               <form>
                     <p>
                         Estacion:ㅤ
@@ -34,8 +30,8 @@
                     <h1>Dashboard</h1>
                 </center>
                 <hr />
-
-                <table class="table" id="tblData">
+  
+                <table id="tblData" class="table table-hover" style="width:100%">
                     <thead>
                         <tr>
                             <th>
@@ -169,30 +165,28 @@
         </tbody>
     </table>
 
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    <a href="#" onclick="Exporter.export(tblData, 'dashboard.xls', 'Dashboard');return false;" class="btn btn-success">Export</a>
-                </th>
-                <th>
-                    <a>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</a>
-                </th>
-                               
-                <th>
-                    <a asp-page="./Index">↩Back to List</a><br />
-                </th>
-            </tr>
-        </thead>
-    </table>
-    
+    <div style="text-align:center">
+        <a asp-page="./Index"><b>↩Back to List</b></a><br />
+    </div>                 
+    <hr />
     <br />
     <br />
     
 </body>
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
-    
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}            
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.1/b-2.3.3/b-html5-2.3.3/r-2.4.0/datatables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#tblData').DataTable( {
+                    dom: "<'row'<'col-sm col-md'l><'col-sm col-md'B><'col-sm col-md'f>>" +
+                        "<'row'<'col-sm-12'tr>>" +
+                        "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            buttons: [
+                    'excelHtml5'
+                ],
+           responsive: false  
+            });
+        });
+    </script>
 }

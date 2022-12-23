@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qqbIrG+/DO4u50iFdpJ317WTIRrXa7y5nSGoxbEBCQA=",
+  "Hash": "vTzUpCF5YZdevvTFiTnWViqpYTylfc+FyN8JWzaJYNU=",
   "Source": "ProyectoCalidad",
   "BasePath": "_content/ProyectoCalidad",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\bootstrap.min.css"
+    },
+    {
+      "Identity": "C:\\Users\\MorenoCD\\Documents\\Visual Studio 2022\\Code Snippets\\Visual C++\\My Code Snippets\\ProyectoCalidad\\ProyectoCalidad\\wwwroot\\css\\buttonTable.css",
+      "SourceId": "ProyectoCalidad",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MorenoCD\\Documents\\Visual Studio 2022\\Code Snippets\\Visual C++\\My Code Snippets\\ProyectoCalidad\\ProyectoCalidad\\wwwroot\\",
+      "BasePath": "_content/ProyectoCalidad",
+      "RelativePath": "css/buttonTable.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\buttonTable.css"
     },
     {
       "Identity": "C:\\Users\\MorenoCD\\Documents\\Visual Studio 2022\\Code Snippets\\Visual C++\\My Code Snippets\\ProyectoCalidad\\ProyectoCalidad\\wwwroot\\css\\jquery.mCustomScrollbar.min.css",
@@ -253,6 +270,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\style.css"
+    },
+    {
+      "Identity": "C:\\Users\\MorenoCD\\Documents\\Visual Studio 2022\\Code Snippets\\Visual C++\\My Code Snippets\\ProyectoCalidad\\ProyectoCalidad\\wwwroot\\css\\styleTables.css",
+      "SourceId": "ProyectoCalidad",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MorenoCD\\Documents\\Visual Studio 2022\\Code Snippets\\Visual C++\\My Code Snippets\\ProyectoCalidad\\ProyectoCalidad\\wwwroot\\",
+      "BasePath": "_content/ProyectoCalidad",
+      "RelativePath": "css/styleTables.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\styleTables.css"
     },
     {
       "Identity": "C:\\Users\\MorenoCD\\Documents\\Visual Studio 2022\\Code Snippets\\Visual C++\\My Code Snippets\\ProyectoCalidad\\ProyectoCalidad\\wwwroot\\favicon.ico",
