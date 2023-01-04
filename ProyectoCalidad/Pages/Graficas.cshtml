@@ -31,7 +31,7 @@
     </center>
 
 
-    <table class="table">
+    <table class="table table-hover" style="font-size:14px;">
         <thead>
             <tr>
                 <th>
@@ -82,7 +82,7 @@
 
                 </td>
                 <td>
-                    <a asp-page="./Graficas">↩Back to List</a>
+                    <a asp-page="./Graficas"><b>↩Back to List</b></a>
                 </td>
             </tr>
                 <br /><br />
@@ -101,15 +101,15 @@
         string _tags = "";
         int[] _values = new int[50];
 
-        @foreach (var item in Model.Formulario_Model)
+    @foreach (var item in Model.Formulario_Model)
              {
               _tags = _tags + "," + @item.Jobs;
               _values[count] = @item.JobCount;
               count++;      
              } 
          var yourJavaScriptArray = Html.Raw(Json.Serialize(_values));
-                     <input type="hidden" id="tags" value="@_tags"/>
-                     <input type="hidden" id="values" value="@yourJavaScriptArray"/>           
+    <input type="hidden" id="tags" value="@_tags"/>
+    <input type="hidden" id="values" value="@yourJavaScriptArray"/>           
      }
 
 <script>

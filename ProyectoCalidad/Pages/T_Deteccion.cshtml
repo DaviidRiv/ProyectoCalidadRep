@@ -8,6 +8,7 @@
     int count = 0;
     int contRun = 0, contLin = 0, contLib = 0, contLeak = 0;
 }
+<head>
     <!-- style css -->
     <link href="@Url.Content("~/css/style.css")" rel="stylesheet" />
     <!-- Responsive-->
@@ -16,6 +17,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.2/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+</head>
+    
 
 <body class="main-layout">
     <div class="text-center">
@@ -33,7 +36,8 @@
         <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
     </center>
 
-    <table class="table">
+    <div id="pdf">
+    <table class="table table-hover" id="table" style="font-size:14px;">
         <thead>
             <tr>
                 <th>
@@ -53,17 +57,17 @@
                 foreach (var item2 in Model.Formulario_Model)
                 {
                     
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item2.ReleaseDate)
-                            </td>
-                            <td>                
-                                @item2.Deteccion
-                            </td>
-                            <td>
-                                @item2.DetCount
-                            </td>
-                        </tr>
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item2.ReleaseDate)
+                                                    </td>
+                                                    <td>                
+                                                        @item2.Deteccion
+                                                    </td>
+                                                    <td>
+                                                        @item2.DetCount
+                                                    </td>
+                                                </tr>
                         if (@item2.Deteccion == "Run Test")
                         {
                             contRun = contRun + @item2.DetCount;
@@ -107,7 +111,7 @@
 
                 </td>
                 <td>
-                    <a asp-page="./T_Deteccion">↩Back to List</a>
+                    <a asp-page="./T_Deteccion"><b>↩Back to List</b></a>
                 </td>
             </tr>
             <br /><br />
@@ -118,8 +122,9 @@
             </center>
         </tbody>     
       </table>
+      </div>
       <div class="form-group">
-        @*<input type="submit" id="download" value="Download" class="btn btn-primary"/>*@
+        <input type="submit" id="download" value="Download" class="btn btn-danger"/>
         @*<input type="submit" value="Create" class="btn btn-primary" />*@
       </div>
     </body>
@@ -169,19 +174,12 @@
 
             document.getElementById("download").addEventListener("click", function () {
                 var imgData = document.getElementById('myChart').toDataURL("Descargas/jpeg", 1.0);
+                var maintable = document.getElementById('table');
                 var pdf = new jsPDF();
                 pdf.addImage(imgData, 'JPEG', 0, 0);
-                //// Creamos la imagen y le ajustamos el tamaño
-                //iTextSharp.text.Image imagen = iTextSharp.text.Image.GetInstance("~/images/DAIKIN_logo.svg.png");
-                //imagen.BorderWidth = 0;
-                //imagen.Alignment = Element.ALIGN_RIGHT;
-                //float percentage = 0.0f;
-                //percentage = 150 / imagen.Width;
-                //imagen.ScalePercent(percentage * 100);
- 
-                //// Insertamos la imagen en el documento
-                //pdf.Add(imagen);
+                pdf.addHtml(maintable);
+
                 pdf.save("GraficaDeteccion.pdf");
-            }, false);    
-        }          
+            }, true);    
+        }                  
 </script>

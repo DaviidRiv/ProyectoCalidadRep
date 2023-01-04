@@ -31,7 +31,7 @@
                 </center>
                 <hr />
   
-                <table id="tblData" class="table table-hover" style="width:100%">
+                <table id="tblData" class="table table-hover">
                     <thead>
                         <tr>
                             <th>
@@ -155,9 +155,9 @@
                         @Html.DisplayFor(modelItem => item.Comentarios)
                     </td>
                     <td>
-                        <a asp-page="./Edit" asp-route-id="@item.ID_Form">Edit</a><br/>  
-                        <a asp-page="./Details" asp-route-id="@item.ID_Form">Details</a> <br/> 
-                        <a asp-page="./Delete" asp-route-id="@item.ID_Form">Delete</a>
+                        <a asp-page="./Edit" asp-route-id="@item.ID_Form"><b>Edit</b></a><br/>  
+                        <a asp-page="./Details" asp-route-id="@item.ID_Form"><b>Details</b></a> <br/> 
+                        <a asp-page="./Delete" asp-route-id="@item.ID_Form"><b>Delete</b></a>
                     </td>
                 </tr>
         }
@@ -179,13 +179,18 @@
     <script>
         $(document).ready(function() {
             $('#tblData').DataTable( {
-                    dom: "<'row'<'col-sm col-md'l><'col-sm col-md'B><'col-sm col-md'f>>" +
+                    dom: "<'row'<'col-sm-12 col-md-5'l><'col-sm-12 col-md-7'f>>" +
                         "<'row'<'col-sm-12'tr>>" +
-                        "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                        "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>" +
+                        "<'col-sm-12 col-md-5'B>",
             buttons: [
-                    'excelHtml5'
+                    {
+                        extend: 'excelHtml5',
+                        text: 'Excel',
+                        className: 'btn btn-success'
+                    }
                 ],
-           responsive: false  
+            responsive: false  
             });
         });
     </script>

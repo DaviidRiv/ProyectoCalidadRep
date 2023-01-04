@@ -28,7 +28,7 @@
     <canvas id="myChart2" style="width:100%;max-width:700px"></canvas>
     </center>
 
-    <table class="table">
+    <table class="table table-hover" style="font-size:14px;">
         <thead>
             <tr>
                 <th>
@@ -80,7 +80,7 @@
 
                     </td>
                     <td>
-                        <a asp-page="./T_Paretos">↩Back to List</a>
+                        <a asp-page="./T_Paretos"><b>↩Back to List</b></a>
                     </td>
                 </tr>
                 <br /><br />
@@ -93,7 +93,7 @@
       </table>
    
       <br />
-      @*<button id="download" type="submit">Download</button>*@
+      <button id="download" type="submit">Download</button>
     </body>
         @{
             int count = 0;
@@ -101,7 +101,7 @@
             string _tags = "";
             int[] _values = new int[100] ;
 
-            @foreach (var item in Model.Formulario_Model)
+    @foreach (var item in Model.Formulario_Model)
                     {
                       //_tags[count] = @item.Deteccion;
                       _tags = _tags + "," + @item.Paretos;
@@ -109,8 +109,8 @@
                       count++;      
                     } 
             var yourJavaScriptArray = Html.Raw(Json.Serialize(_values));
-            <input type="hidden" id="tags" value="@_tags"/>
-            <input type="hidden" id="values" value="@yourJavaScriptArray"/>           
+    <input type="hidden" id="tags" value="@_tags"/>
+    <input type="hidden" id="values" value="@yourJavaScriptArray"/>           
         }
     <script>
         if ($('#myChart2').length) {
