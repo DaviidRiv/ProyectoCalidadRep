@@ -7,6 +7,7 @@
     int[] _values = new int[200];
     int count = 0;
     int contRun = 0, contLin = 0, contLib = 0, contLeak = 0;
+    string bs64 = "";
 }
 <head>
     <!-- style css -->
@@ -61,17 +62,17 @@
                 foreach (var item2 in Model.Formulario_Model)
                 {
                     
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item2.ReleaseDate)
-                                    </td>
-                                    <td>                
-                                        @item2.Deteccion
-                                    </td>
-                                    <td>
-                                        @item2.DetCount
-                                    </td>
-                                </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    @Html.DisplayFor(modelItem => item2.ReleaseDate)
+                                                                                                </td>
+                                                                                                <td>                
+                                                                                                    @item2.Deteccion
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    @item2.DetCount
+                                                                                                </td>
+                                                                                            </tr>
                         if (@item2.Deteccion == "Run Test")
                         {
                             contRun = contRun + @item2.DetCount;
@@ -117,12 +118,24 @@
         <div style="text-align:right; font-size:14px;">
             <a asp-page="./T_Deteccion"><b>↩Back to List</b></a>
         </div>
-    </body>
+        <div class="col-md-4 text-center align-self-center">
+            <button id="convert" class="btn btn-primary">Convert to Base64</button>
+        </div>
+        <div class="col-md-4">
+            <textarea class="form-control" name="" id="Base64" cols="10" rows="15"></textarea>
+        </div>
+        <div class="col-md-4" style="text-align:center;">
+            <textarea class="form-control" name="" id="Base65" cols="10" rows="15"></textarea>
+        </div>
+        <div class="col-md-4" style="text-align:right;">
+            <textarea class="form-control" name="" id="Base66" cols="10" rows="15"></textarea>
+        </div>
+        </body>
 
 @{   
     @foreach (var item2 in Model.Formulario_Model)
     {
-        _tags = ",RunTest "+",Linea "+",Liberacion "+",LeakTest ";
+        _tags = ",RunTest " + @contRun + ",Linea " + @contLin + ",Liberacion " + @contLib + ",LeakTest " + @contLeak;
         _values[0] = contRun;
         _values[1] = contLin;
         _values[2] = contLib;
@@ -154,7 +167,7 @@
                               "#2b5797",
                               "#e8c3b9"
                             ];
-                            new Chart("myChart", {
+                            var chart = new Chart("myChart", {
                               type: "pie",
                               data: {
                                 labels: xValues,
@@ -170,41 +183,88 @@
                                 }
                               }
                             });  
-                        } 
-                            const getBase64StringFromDataURL = (dataURL) => dataURL.replace('data:', '').replace(/^.+,/, '');
-                            const imgData = document.getElementById('myChart');
-                            const dataURL = imgData.toDataURL('image/jpeg', 0.5);
-                            console.log(dataURL);
-                            // Logs data:image/png;base64,wL2dvYWwgbW9yZ...
+                        }  
 
-                            // Convert to Base64 string
-                            const base64 = getBase64StringFromDataURL(dataURL);
-                            console.log(base64);
+                        $('#Base64').val( chart.toBase64Image() );
+                        var url64 =  $('#Base64').val();
+                        console.log("1 : " + url64);
 
-                            $('#tblData').DataTable( {
-                                    dom: "<'row'<'col-sm-12 col-md-5'l><'col-sm-12 col-md-7'f>>" +
-                                        "<'row'<'col-sm-12'tr>>" +                                    
-                                        "<'col-sm-12 col-md-7'B>",
-                                    buttons: [
-                                            {
-                                                extend: 'pdfHtml5',
-                                                text: 'PDF',
-                                                className: 'btn btn-danger',
-                                                alignment: 'center',
-                                                    customize: function ( doc ) {
-                                                        doc.content.splice( 1, 0, {
-                                                            margin: [ 0, 0, 0, 12 ],
+                        $('#tblData').ready(function(){
+                                $('#Base65').val( chart.toBase64Image() );     
+                                url64 = $('#Base65').val();
+                                console.log("2 : " + url64);
+
+                                const getBase64StringFromDataURL = (dataURL) => dataURL.replace('data:', '').replace(/^.+,/, '');
+                                const imgData = document.getElementById('myChart');
+                                const dataURL = chart.toBase64Image(); //.split(';base64,')[1]
+                                //console.log("este es el url : "+dataURL);  
+                                const base64 = getBase64StringFromDataURL(dataURL);
+                                //console.log("esta es la base 64 : "+base64);
+
+                                        $('#tblData').DataTable( {
+                                                dom: "<'row'<'col-sm-12 col-md-5'l><'col-sm-12 col-md-7'f>>" +
+                                                    "<'row'<'col-sm-12'tr>>" +                                    
+                                                    "<'col-sm-12 col-md-7'B>",
+                                                buttons: [
+                                                        {
+                                                            extend: 'pdfHtml5',
+                                                            text: 'PDF',
+                                                            className: 'btn btn-danger',
                                                             alignment: 'center',
-                                                            image: dataURL
-                                                        } );
-                                                    }
-                                            }
-                                        ],
-                                    responsive: false
-                            });               
+                                                                customize: function ( doc ) {
+                                                                    doc.content.splice( 1, 0, {
+                                                                        margin: [ 0, 0, 0, 12 ],
+                                                                        alignment: 'center',
+                                                                        image: url64 
+                                                             } );
+                                                           }
+                                                        }
+                                                    ],
+                                                responsive: true
+                                        });
+                        });
+
+                           $('#convert').on('click',function(){
+                                    $('#Base66').val( chart.toBase64Image() );     
+                                    url64 = $('#Base66').val();
+                                    console.log("3 : " + url64);
+
+                                    const getBase64StringFromDataURL = (dataURL) => dataURL.replace('data:', '').replace(/^.+,/, '');
+                                    const imgData = document.getElementById('myChart');
+                                    const dataURL = chart.toBase64Image(); //.split(';base64,')[1]
+                                    //console.log("este es el url : "+dataURL);  
+                                    const base64 = getBase64StringFromDataURL(dataURL);
+                                    //console.log("esta es la base 64 : "+base64);
+
+                                            $('#tblData').DataTable( {
+                                                    dom: "<'row'<'col-sm-12 col-md-5'l><'col-sm-12 col-md-7'f>>" +
+                                                        "<'row'<'col-sm-12'tr>>" +                                    
+                                                        "<'col-sm-12 col-md-7'B>",
+                                                    buttons: [
+                                                            {
+                                                                extend: 'pdfHtml5',
+                                                                text: 'PDF',
+                                                                className: 'btn btn-danger',
+                                                                alignment: 'center',
+                                                                    customize: function ( doc ) {
+                                                                        doc.content.splice( 1, 0, {
+                                                                            margin: [ 0, 0, 0, 12 ],
+                                                                            alignment: 'center',
+                                                                            image: url64 
+                                                                 } );
+                                                               }
+                                                            }
+                                                        ],
+                                                    responsive: true
+                                            });
+                            });
+
                             
+
                 });
                     
+            /*'data:image/png;base64,'+base64*/
+
         </script>
 }
 
