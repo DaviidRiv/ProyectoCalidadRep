@@ -12,19 +12,24 @@
     @{
         if (User.IsInRole("Administrador"))
         {
-                <h1 class="display-4">Welcome</h1>
-                <h1>Role: Admin</h1>
-                <h1><div>@ViewData["GraphApiResult"]</div></h1>
-                <h1><div>@ViewData["GraphApiResult2"]</div></h1> 
+                    <h1 class="display-4">Welcome</h1>
+                    <h1>Role: Admin</h1>
+                    <h1><div>@ViewData["GraphApiResult"]</div></h1>
+                    <h1><div>@ViewData["GraphApiResult2"]</div></h1> 
         }
         else if (User.IsInRole("Usuario"))
         {
+                    <h1 class="display-4">Welcome</h1>
+                    <h1>Role: User</h1>
+                    <h1><div>@ViewData["GraphApiResult"]</div></h1>
+                    <h1><div>@ViewData["GraphApiResult2"]</div></h1> 
+        }else{
                 <h1 class="display-4">Welcome</h1>
-                <h1>Role: User</h1>
+                <h1>Role: Undefined</h1>
                 <h1><div>@ViewData["GraphApiResult"]</div></h1>
-                <h1><div>@ViewData["GraphApiResult2"]</div></h1> 
+                <h1><div>@ViewData["GraphApiResult2"]</div></h1>
+                <a href="mailto:miguel.balleza@daikinapplied.com"><h2 style="color:blue;">Enviar correo para solicitar rol</h2></a>
         }
-        
     }
     <img src="~/images/mascota_daikin.png" style="widht:250px; height:250px;" title="Pichon-Kun">
     

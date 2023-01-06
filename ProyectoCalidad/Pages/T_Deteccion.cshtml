@@ -57,44 +57,39 @@
             </tr>
         </thead>
         <tbody>    
-
             @{
                 foreach (var item2 in Model.Formulario_Model)
-                {
-                    
-                                                                                            <tr>
-                                                                                                <td>
-                                                                                                    @Html.DisplayFor(modelItem => item2.ReleaseDate)
-                                                                                                </td>
-                                                                                                <td>                
-                                                                                                    @item2.Deteccion
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    @item2.DetCount
-                                                                                                </td>
-                                                                                            </tr>
-                        if (@item2.Deteccion == "Run Test")
-                        {
-                            contRun = contRun + @item2.DetCount;
-                        }
-                        else if (@item2.Deteccion == "Linea")
-                        {
-                            contLin = contLin + @item2.DetCount;
-                        }
-                        else if (@item2.Deteccion == "Liberacion")
-                        {
-                            contLib = contLib + @item2.DetCount;
-                        }
-                        else if (@item2.Deteccion == "Leak Test")
-                        {
-                            contLeak = contLeak + @item2.DetCount;
-                        }
-                        cont = cont + @item2.DetCount;
+                {                    
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item2.ReleaseDate)
+                        </td>
+                        <td>                
+                            @item2.Deteccion
+                        </td>
+                        <td>
+                            @item2.DetCount
+                        </td>
+                    </tr>
+                    if (@item2.Deteccion == "Run Test")
+                    {
+                        contRun = contRun + @item2.DetCount;
                     }
-
+                    else if (@item2.Deteccion == "Linea")
+                    {
+                        contLin = contLin + @item2.DetCount;
+                    }
+                    else if (@item2.Deteccion == "Liberacion")
+                    {
+                        contLib = contLib + @item2.DetCount;
+                    }
+                    else if (@item2.Deteccion == "Leak Test")
+                    {
+                        contLeak = contLeak + @item2.DetCount;
+                    }
+                    cont = cont + @item2.DetCount;
                 }
-
-             
+            }
             <tr>
                 <td>
 
@@ -105,8 +100,7 @@
                 <td>
                     <strong>@cont</strong>
                 </td>
-            </tr>
-                      
+            </tr>        
         </tbody>     
       </table>
       <br />
@@ -115,21 +109,15 @@
                     <a> | </a>
                     <a asp-page="./T_Paretos">Paretos</a></h3>
         </div>
+
         <div style="text-align:right; font-size:14px;">
             <a asp-page="./T_Deteccion"><b>↩Back to List</b></a>
         </div>
-        <div class="col-md-4 text-center align-self-center">
-            <button id="convert" class="btn btn-primary">Convert to Base64</button>
+        
+        <div>
+            <textarea id="Base66" style="visibility: hidden;" ></textarea>
         </div>
-        <div class="col-md-4">
-            <textarea class="form-control" name="" id="Base64" cols="10" rows="15"></textarea>
-        </div>
-        <div class="col-md-4" style="text-align:center;">
-            <textarea class="form-control" name="" id="Base65" cols="10" rows="15"></textarea>
-        </div>
-        <div class="col-md-4" style="text-align:right;">
-            <textarea class="form-control" name="" id="Base66" cols="10" rows="15"></textarea>
-        </div>
+        
         </body>
 
 @{   
@@ -151,120 +139,66 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }            
-        <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.1/b-2.3.3/b-html5-2.3.3/r-2.4.0/datatables.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-            <script type="text/javascript">
-                $(document).ready(function() {
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.1/b-2.3.3/b-html5-2.3.3/r-2.4.0/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
 
-                        if ($('#myChart').length) {
-                            var xValues = document.getElementById('tags').value.replace(/\[|\]/g, '').split(',')
-                            var yValues = Array.from(document.getElementById('values').value.replace(/\[|\]/g, '').split(',')).map(Number)
-                            xValues.shift()
-                            var barColors = [
-                              "#b91d47",
-                              "#00aba9",
-                              "#2b5797",
-                              "#e8c3b9"
-                            ];
-                            var chart = new Chart("myChart", {
-                              type: "pie",
-                              data: {
-                                labels: xValues,
-                                datasets: [{
-                                  backgroundColor: barColors,
-                                  data: yValues
-                                }]
-                              },
-                              options: {
-                                title: {
-                                  display: true,
-                                  text: "Gráfica Detecciones" 
-                                }
-                              }
-                            });  
-                        }  
+            if ($('#myChart').length) {
+                var xValues = document.getElementById('tags').value.replace(/\[|\]/g, '').split(',')
+                var yValues = Array.from(document.getElementById('values').value.replace(/\[|\]/g, '').split(',')).map(Number)
+                xValues.shift()
+                var barColors = [
+                    "#b91d47",
+                    "#00aba9",
+                    "#2b5797",
+                    "#e8c3b9"
+                    ];
+                var chart = new Chart("myChart", {
+                    type: "pie",
+                    data: {
+                        labels: xValues,
+                        datasets: [{
+                            backgroundColor: barColors,
+                            data: yValues
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: "Gráfica Detecciones" 
+                        }
+                    }
+                });  
+            }  
+            
+            $('#myChart').on('click',function(){
+                $('#Base66').val( chart.toBase64Image() );     
+                url64 = $('#Base66').val();
 
-                        $('#Base64').val( chart.toBase64Image() );
-                        var url64 =  $('#Base64').val();
-                        console.log("1 : " + url64);
-
-                        $('#tblData').ready(function(){
-                                $('#Base65').val( chart.toBase64Image() );     
-                                url64 = $('#Base65').val();
-                                console.log("2 : " + url64);
-
-                                const getBase64StringFromDataURL = (dataURL) => dataURL.replace('data:', '').replace(/^.+,/, '');
-                                const imgData = document.getElementById('myChart');
-                                const dataURL = chart.toBase64Image(); //.split(';base64,')[1]
-                                //console.log("este es el url : "+dataURL);  
-                                const base64 = getBase64StringFromDataURL(dataURL);
-                                //console.log("esta es la base 64 : "+base64);
-
-                                        $('#tblData').DataTable( {
-                                                dom: "<'row'<'col-sm-12 col-md-5'l><'col-sm-12 col-md-7'f>>" +
-                                                    "<'row'<'col-sm-12'tr>>" +                                    
-                                                    "<'col-sm-12 col-md-7'B>",
-                                                buttons: [
-                                                        {
-                                                            extend: 'pdfHtml5',
-                                                            text: 'PDF',
-                                                            className: 'btn btn-danger',
-                                                            alignment: 'center',
-                                                                customize: function ( doc ) {
-                                                                    doc.content.splice( 1, 0, {
-                                                                        margin: [ 0, 0, 0, 12 ],
-                                                                        alignment: 'center',
-                                                                        image: url64 
-                                                             } );
-                                                           }
-                                                        }
-                                                    ],
-                                                responsive: true
-                                        });
-                        });
-
-                           $('#convert').on('click',function(){
-                                    $('#Base66').val( chart.toBase64Image() );     
-                                    url64 = $('#Base66').val();
-                                    console.log("3 : " + url64);
-
-                                    const getBase64StringFromDataURL = (dataURL) => dataURL.replace('data:', '').replace(/^.+,/, '');
-                                    const imgData = document.getElementById('myChart');
-                                    const dataURL = chart.toBase64Image(); //.split(';base64,')[1]
-                                    //console.log("este es el url : "+dataURL);  
-                                    const base64 = getBase64StringFromDataURL(dataURL);
-                                    //console.log("esta es la base 64 : "+base64);
-
-                                            $('#tblData').DataTable( {
-                                                    dom: "<'row'<'col-sm-12 col-md-5'l><'col-sm-12 col-md-7'f>>" +
-                                                        "<'row'<'col-sm-12'tr>>" +                                    
-                                                        "<'col-sm-12 col-md-7'B>",
-                                                    buttons: [
-                                                            {
-                                                                extend: 'pdfHtml5',
-                                                                text: 'PDF',
-                                                                className: 'btn btn-danger',
-                                                                alignment: 'center',
-                                                                    customize: function ( doc ) {
-                                                                        doc.content.splice( 1, 0, {
-                                                                            margin: [ 0, 0, 0, 12 ],
-                                                                            alignment: 'center',
-                                                                            image: url64 
-                                                                 } );
-                                                               }
-                                                            }
-                                                        ],
-                                                    responsive: true
-                                            });
+                $('#tblData').DataTable( {
+                    dom: "<'row'<'col-sm-12 col-md-5'l><'col-sm-12 col-md-7'f>>" +
+                         "<'row'<'col-sm-12'tr>>" +                                    
+                         "<'col-sm-12 col-md-7'B>",
+                    buttons: [{
+                        extend: 'pdfHtml5',
+                        text: 'PDF',
+                        className: 'btn btn-danger',                                                                                                                                   
+                        customize: function ( doc ) {
+                            doc.content.splice( 1, 0, {
+                                width: 550,
+                                height: 250,
+                                alignment: 'center',
+                                image: url64
                             });
-
-                            
-
-                });
-                    
-            /*'data:image/png;base64,'+base64*/
-
-        </script>
+                        }
+                    }],
+                    responsive: true,                                                     
+                    retrieve: true
+                });                                            
+            });           
+        });
+    </script>
 }
 

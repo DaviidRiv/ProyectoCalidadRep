@@ -13,6 +13,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.2/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/styleTables.css")"/>
 </head>
 
 <body class="main-layout">
@@ -27,11 +28,13 @@
             </p>
         </form>
     <center>
-        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+        <canvas id="myChart3" style="width:100%;max-width:600px"></canvas>
+    </center>
+    <center> 
+        <h2>Tabla DPU</h2>
     </center>
 
-
-    <table class="table table-hover" style="font-size:14px;">
+    <table class="table table-hover" id="tblData3" style="font-size:14px; width:100%;">
         <thead>
             <tr>
                 <th>
@@ -72,77 +75,103 @@
                         <strong>@cont</strong>
                     </td>
             </tr>
-             <tr>
-                <td>
-                    <h3><a asp-page="./T_Deteccion">Deteccion</a>
-                    <a> | </a>
-                    <a asp-page="./T_Paretos">Paretos</a></h3> 
-                </td>
-                <td>
-
-                </td>
-                <td>
-                    <a asp-page="./Graficas"><b>↩Back to List</b></a>
-                </td>
-            </tr>
-                <br /><br />
-            <center> 
-                <h2>  
-                    Tabla DPU
-                </h2>
-            </center>
         </tbody>
     </table>
-   
-  </body>
+    <div style="text-align:left">
+        <h3><a asp-page="./T_Deteccion">Deteccion</a>
+            <a> | </a>
+            <a asp-page="./T_Paretos">Paretos</a></h3>
+    </div>
+    <div style="text-align:right; font-size:14px;">          
+        <a asp-page="./Graficas"><b>↩Back to List</b></a>
+    </div>
+    <div>
+        <textarea id="Base66" style="visibility: hidden;" ></textarea>
+    </div>
 
+  </body>
     @{
         int count = 0;
         string _tags = "";
         int[] _values = new int[50];
 
     @foreach (var item in Model.Formulario_Model)
-             {
-              _tags = _tags + "," + @item.Jobs;
-              _values[count] = @item.JobCount;
-              count++;      
-             } 
-         var yourJavaScriptArray = Html.Raw(Json.Serialize(_values));
+                 {
+                  _tags = _tags + "," + @item.Jobs;
+                  _values[count] = @item.JobCount;
+                  count++;      
+                 } 
+        var yourJavaScriptArray = Html.Raw(Json.Serialize(_values));
     <input type="hidden" id="tags" value="@_tags"/>
     <input type="hidden" id="values" value="@yourJavaScriptArray"/>           
      }
 
-<script>
-    
-    if ($('#myChart').length) {
-        
-        var xValues = document.getElementById('tags').value.replace(/\[|\]/g, '').split(',')
-        var yValues = Array.from(document.getElementById('values').value.replace(/\[|\]/g, '').split(',')).map(Number)
-        xValues.shift()
-        new Chart("myChart", {
-          type: "line",
-          data: {
-            labels: xValues,
-            datasets: [{
-                  fill: false,
-                  lineTension: 0,
-                  backgroundColor: "rgba(0,0,255,1.0)",
-                  borderColor: "rgba(0,0,255,0.1)",
-                  data: yValues
-            }]
-          },
-          options: {
-                legend: {
-                    display: false,
-                },
-                scales: {
-                  yAxes: [],
-                },
-                title: {
-                  display: true,
-                  text: "Gráfica DPU"
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }            
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.1/b-2.3.3/b-html5-2.3.3/r-2.4.0/datatables.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                if ($('#myChart3').length) {
+                    var xValues = document.getElementById('tags').value.replace(/\[|\]/g, '').split(',')
+                    var yValues = Array.from(document.getElementById('values').value.replace(/\[|\]/g, '').split(',')).map(Number)
+                    xValues.shift()
+                    var chart3 = new Chart("myChart3", {
+                      type: "line",
+                      data: {
+                        labels: xValues,
+                        datasets: [{
+                              fill: false,
+                              lineTension: 0,
+                              backgroundColor: "rgba(0,0,255,1.0)",
+                              borderColor: "rgba(0,0,255,0.1)",
+                              data: yValues
+                        }]
+                      },
+                      options: {
+                            legend: {
+                                display: false,
+                            },
+                            scales: {
+                              yAxes: [],
+                            },
+                            title: {
+                              display: true,
+                              text: "Gráfica DPU"
+                            }
+                      }
+                    });
                 }
-          }
-        });
-    }
-</script>
+
+                $('#myChart3').on('click',function(){
+                    $('#Base66').val( chart3.toBase64Image() );     
+                    url64 = $('#Base66').val();
+
+                    $('#tblData3').DataTable( {
+                        dom: "<'row'<'col-sm-12 col-md-5'l><'col-sm-12 col-md-7'f>>" +
+                             "<'row'<'col-sm-12'tr>>" +                                    
+                             "<'col-sm-12 col-md-7'B>",
+                        buttons: [{
+                            extend: 'pdfHtml5',
+                            text: 'PDF',
+                            className: 'btn btn-danger',                                                                                                                                   
+                            customize: function ( doc ) {
+                                doc.content.splice( 1, 0, {
+                                    width: 550,
+                                    height: 250,
+                                    alignment: 'center',
+                                    image: url64                                    
+                                });
+                            //doc.pageMargins = [200, 20, 150, 10];
+                            }
+                        }],
+                        responsive: true,                                                      
+                        retrieve: true,                                                   
+                    });                                            
+                });           
+            });
+        </script>
+}
