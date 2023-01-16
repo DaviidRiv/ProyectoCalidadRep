@@ -4,12 +4,14 @@
     ViewData["Title"] = "DashboardUser";
 }
 <head>
-    <!-- bootstrap css -->
-    @*<link href="@Url.Content("~/css/bootstrap.min.css")" rel="stylesheet" />*@
-    <!-- style css -->
-    <link href="@Url.Content("~/css/style.css")" rel="stylesheet" />
-    <!-- Responsive-->
-    <link href="@Url.Content("~/css/responsive.css")" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <link href="@Url.Content("~/css/style.css")" rel="stylesheet" />    
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/styleTables.css")"/>
+    <style>
+        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+            background-color: #9EE3FF;
+        }
+    </style>
 </head>
 
 <body class="main-layout">
@@ -33,7 +35,7 @@
                         <h1>Dashboard User</h1>
                     </center>
                     <hr />
-                <table class="table" id="tblData" class="table table-hover">                    
+                <table id="tblData" class="table table-hover">                    
                     <thead>
                         <tr>
                             <th>
@@ -163,12 +165,10 @@
             }
             </tbody>
         </table>
-        <div style="text-align center">
-            <a asp-page="./DashUser">↩Back to List</a><br />
-
+        <div style="text-align:center">
+            <a asp-page="./DashUser" style="font-size:14px"><b>↩Back to List</b></a><br />
         </div>
-    
-
+    <hr />
     <br />
     <br />
 </body>
